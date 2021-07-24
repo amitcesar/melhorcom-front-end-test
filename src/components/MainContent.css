@@ -1,0 +1,69 @@
+.phones-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  min-width: 500px;
+  font-size: 0.95rem;
+}
+.phones-container li,
+.phones-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-list p {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.header-list button {
+  width: 100px;
+  height: 35px;
+  padding: 0.5em;
+  background: #4aa1f8;
+  border-radius: 5px;
+
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.list-wrapper {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 2em;
+}
+
+.list-category li,
+.list-content li {
+  padding: 1.5em;
+}
+
+.list-category li:last-of-type,
+.list-content li:last-of-type {
+  margin-right: auto;
+}
+
+.list-category li {
+  padding-left: 1.5em;
+}
+.list-content li {
+  padding-left: 1.5em;
+  padding-right: 0em;
+}
+
+.links-div {
+  display: flex;
+}
+
+.list-content img {
+  display: block;
+  margin-right: 1em;
+}
