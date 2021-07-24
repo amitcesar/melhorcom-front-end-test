@@ -1,0 +1,7 @@
+.header-navbar {
+  background: #054a91;
+  height: 87px;
+
+  display: flex;
+  justify-content: center;
+}
