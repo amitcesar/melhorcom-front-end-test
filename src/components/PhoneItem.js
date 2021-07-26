@@ -3,10 +3,16 @@ import Edit from "../images/edit-24px.svg";
 import Delete from "../images/delete-24px.svg";
 
 import "./PhoneItem.css";
+
 const PhoneItem = ({ phone }) => {
+  const phoneCode = phone.code[0];
+  console.log("code Original", phoneCode);
+  const codeWithOutSlash = phoneCode.substring(1);
+  console.log("Altered Code:", codeWithOutSlash);
+
   return (
     <ul className="list-content">
-      <li>{phone.code}</li>
+      <li>{codeWithOutSlash}</li>
       <li>{phone.model}</li>
       <li>{phone.price}</li>
       <li>{phone.brand}</li>

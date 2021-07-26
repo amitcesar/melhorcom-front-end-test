@@ -10,11 +10,7 @@
 .list-content li:last-of-type {
   margin-right: auto;
 }
-/*
-.list-content li {
-  padding-right: 2em;
-}
-*/
+
 .links-div {
   display: flex;
 }

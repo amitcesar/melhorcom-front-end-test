@@ -6,11 +6,16 @@ import PhoneItem from "./PhoneItem.js";
 
 export const MainContent = () => {
   const [phone, setPhone] = useState([]);
+
   useEffect(() => {
     async function loadPhones() {
-      const response = await api.get("/phone");
-      setPhone(response.data);
-      console.log(response.data);
+      try {
+        const response = await api.get("/phone");
+        setPhone(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     loadPhones();
   }, []);
@@ -19,9 +24,7 @@ export const MainContent = () => {
     <div className="phones-container">
       <div className="header-list">
         <p className="header-title">Produtos</p>
-        <button onClick="" className="buttonAdd">
-          + ADCIONAR
-        </button>
+        <button className="buttonAdd">+ ADCIONAR</button>
       </div>
       <div className="list-wrapper">
         <ul className="list-category">
@@ -31,6 +34,7 @@ export const MainContent = () => {
           <li>Marca</li>
           <li>Cor</li>
         </ul>
+
         {phone.map((phone) => (
           <PhoneItem key={phone._id} phone={phone} />
         ))}
