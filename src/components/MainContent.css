@@ -3,9 +3,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  min-width: 500px;
-  font-size: 0.95rem;
 }
 .phones-container li,
 .phones-container ul {
@@ -17,11 +14,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 700px;
 }
 
 .header-list p {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 20px;
 }
 
 .header-list button {
@@ -39,24 +37,34 @@
   border: 1px solid black;
   border-radius: 5px;
   margin-bottom: 2em;
+  width: 700px;
+  min-width: 500px;
 }
 
+.list-category {
+  display: flex;
+}
+.list-content {
+  display: flex;
+
+  border-top: 2px solid black;
+}
 .list-category li,
 .list-content li {
-  padding: 1.5em;
+  padding: 2em 2em;
 }
-
-.list-category li:last-of-type,
 .list-content li:last-of-type {
   margin-right: auto;
 }
-
-.list-category li {
+.list-category li:nth-last-of-type(3) {
   padding-left: 1.5em;
 }
+.list-category li:nth-last-of-type(2) {
+  padding-left: 3em;
+}
+
 .list-content li {
-  padding-left: 1.5em;
-  padding-right: 0em;
+  padding-right: 0.5em;
 }
 
 .links-div {
@@ -65,5 +73,5 @@
 
 .list-content img {
   display: block;
-  margin-right: 1em;
+  margin-right: 2em;
 }
