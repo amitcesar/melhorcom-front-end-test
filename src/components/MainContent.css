@@ -40,38 +40,18 @@
   width: 700px;
   min-width: 500px;
 }
-
+.list-category li {
+  padding: 2em 1.5em;
+}
 .list-category {
   display: flex;
 }
-.list-content {
-  display: flex;
-
-  border-top: 2px solid black;
-}
+/*
 .list-category li,
-.list-content li {
-  padding: 2em 2em;
-}
-.list-content li:last-of-type {
-  margin-right: auto;
-}
 .list-category li:nth-last-of-type(3) {
   padding-left: 1.5em;
 }
 .list-category li:nth-last-of-type(2) {
   padding-left: 3em;
 }
-
-.list-content li {
-  padding-right: 0.5em;
-}
-
-.links-div {
-  display: flex;
-}
-
-.list-content img {
-  display: block;
-  margin-right: 2em;
-}
+*/

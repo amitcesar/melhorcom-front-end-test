@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MainContent.css";
-import Edit from "../images/edit-24px.svg";
-import Delete from "../images/delete-24px.svg";
+
+import api from "../services/api";
+import PhoneItem from "./PhoneItem.js";
+
 export const MainContent = () => {
+  const [phone, setPhone] = useState([]);
+  useEffect(() => {
+    async function loadPhones() {
+      const response = await api.get("/phone");
+      setPhone(response.data);
+      console.log(response.data);
+    }
+    loadPhones();
+  }, []);
+
   return (
     <div className="phones-container">
       <div className="header-list">
@@ -19,17 +31,9 @@ export const MainContent = () => {
           <li>Marca</li>
           <li>Cor</li>
         </ul>
-        <ul className="list-content">
-          <li>23856233</li>
-          <li>XT2041-1</li>
-          <li>R$ 1.207,20</li>
-          <li>Motorola</li>
-          <li>Cinza</li>
-          <ul class="links-div">
-            <img src={Edit} alt="Edit" />
-            <img src={Delete} alt="Delete" />
-          </ul>
-        </ul>
+        {phone.map((phone) => (
+          <PhoneItem key={phone._id} phone={phone} />
+        ))}
       </div>
     </div>
   );
