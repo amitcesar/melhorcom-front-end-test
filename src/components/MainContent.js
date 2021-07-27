@@ -7,17 +7,18 @@ import PhoneItem from "./PhoneItem.js";
 export const MainContent = () => {
   const [phone, setPhone] = useState([]);
 
+  const fetchPhoneData = async () => {
+    const response = await api.get("/phone");
+    console.log(response.data);
+    return response.data;
+  };
+
   useEffect(() => {
-    async function loadPhones() {
-      try {
-        const response = await api.get("/phone");
-        setPhone(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    loadPhones();
+    const getAllPhones = async () => {
+      const AllPhonesData = await fetchPhoneData();
+      if (AllPhonesData) setPhone(AllPhonesData);
+    };
+    getAllPhones();
   }, []);
 
   return (
