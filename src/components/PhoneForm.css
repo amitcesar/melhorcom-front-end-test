@@ -1,48 +1,75 @@
 .form-container {
-  background: #d6f0ff;
-  padding: 2em;
+  height: 81vh;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.form-container form .form-row {
+.form-container h2 {
+  margin-bottom: 1em;
+}
+
+.form-container form {
+  max-width: 500px;
+  padding: 2em;
+}
+
+.form-container .form-row {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   margin: 1em;
 }
-
-.input-group {
-  display: flex;
+.form-row label {
+  margin-bottom: 0.2em;
 }
-
-.form-row input[type="text"] {
-  height: 40px;
-  width: 100%;
+.form-container .form-row input[type="text"],
+.form-container .form-row input[type="number"],
+.form-container .form-row input[type="date"] {
+  height: 35px;
+  width: 198px;
   outline: none;
   border-radius: 5px;
   border: 1px solid #707070;
 
-  padding-left: 1em;
+  padding-left: 10px;
 }
+.form-container .form-row select {
+  display: block;
+  width: 198px;
+  margin-left: auto;
+  height: 35px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-top: 0.3em;
+}
+.form-row .form-label {
+  margin-bottom: 0.3em;
+}
+
+.group-form {
+  display: flex;
+  justify-content: center;
+}
+
 .group-button {
   display: flex;
   justify-content: flex-end;
-
-  padding: 1em;
+  border: 1px solid purple;
 }
 .group-button button {
-  background: #b45656; /* #dae3ed;*/
-  margin-right: 3.5em;
+  background: #dae3ed;
+  margin-left: 2.5em;
   padding: 0.5em;
-  width: 80px;
+  width: 81px;
   border-radius: 5px;
-  font-weight: bolder;
+
   border: 1px solid #1d1d1d;
 }
 .group-button button:last-child {
-  margin-right: 0em;
+  margin-right: 0.7em;
 }

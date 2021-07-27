@@ -6,7 +6,7 @@ export const PhoneForm = () => {
       <h2>Detalhes do Produto</h2>
 
       <form>
-        <div className="input-group">
+        <div className="group-form">
           <div className="form-row">
             <label className="form-label" htmlFor="model">
               Modelo
@@ -20,32 +20,50 @@ export const PhoneForm = () => {
             <input type="text" name="brand" placeholder="XT2041-1" />
           </div>
         </div>
-        <div class="input-group">
+
+        <div className="group-form">
           <div className="form-row">
             <label className="form-label" htmlFor="color">
-              Color
+              Cor
+              <select>
+                <option disabled="" value="" placeholder="Preto"></option>
+                <option value="BLACK">Preto</option>
+                <option value="WHITE">Branco</option>
+                <option value="GOLD">Dourado</option>
+                <option value="PINK">Rosa</option>
+              </select>
             </label>
-            <input type="text" name="color" placeholder="XT2041-1" />
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="price">
               Preço
             </label>
-            <input type="text" name="price" placeholder="XT2041-1" />
+            <input type="number" name="price" placeholder="1200,00" />
           </div>
         </div>
-        <div className="input-group">
-          <div className="form-row">
+
+        <div className="group-form date">
+          <div className="form-row ">
             <label className="form-label" htmlFor="startDate">
               Inicio das vendas
             </label>
-            <input type="text" name="startDate" placeholder="XT2041-1" />
+            <input
+              type="date"
+              name="startDate"
+              min="2018-12-25"
+              placeholder="15/03/2020"
+            />
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="endDate">
               Fim das Vendas
             </label>
-            <input type="text" name="model" placeholder="XT2041-1" />
+            <input
+              type="date"
+              name="endDate"
+              placeholder="14/06/2020"
+              min="2018-12-25"
+            />
           </div>
         </div>
         <div className="group-button">
