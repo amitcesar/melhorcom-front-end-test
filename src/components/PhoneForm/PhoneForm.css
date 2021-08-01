@@ -46,7 +46,9 @@
   border-radius: 5px;
   background-color: #fff;
   margin-top: 0.3em;
+  padding-left: 10px;
 }
+
 .form-row .form-label {
   margin-bottom: 0.3em;
 }
@@ -59,7 +61,6 @@
 .group-button {
   display: flex;
   justify-content: flex-end;
-  border: 1px solid purple;
 }
 .group-button button {
   background: #dae3ed;
