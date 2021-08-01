@@ -15,7 +15,7 @@ const initialValue = {
 };
 
 export const PhoneForm = () => {
-  const { history, push } = useHistory();
+  const history = useHistory();
   const { _id } = useParams();
 
   const [values, setValues] = useState(_id ? null : initialValue);
@@ -26,7 +26,7 @@ export const PhoneForm = () => {
         setValues(response.data);
       });
     }
-  }, []);
+  }, [_id]);
   function OnChangeInput(event) {
     const { name, value } = event.target;
 
@@ -35,7 +35,7 @@ export const PhoneForm = () => {
 
   function OnSubmit(event) {
     event.preventDefault();
-    const method = _id ? "put" : "post";
+    const method = _id ? "patch" : "post";
     const url = _id
       ? `https://phones--melhorcom.repl.co/phone/${_id}`
       : "https://phones--melhorcom.repl.co/phone/";
@@ -45,7 +45,6 @@ export const PhoneForm = () => {
       headers: { cpf: "04925787454" },
     })
       .then((response) => {
-        console.log("New Phone ADD ! :D");
         history.push("/");
       })
       .catch((err) => console.log("errrrou", err));
