@@ -6,7 +6,6 @@ const usePhoneData = () => {
 
   const fetchPhoneData = async () => {
     const response = await api.get("/phone");
-    console.log(response.data);
     return response.data;
   };
 
