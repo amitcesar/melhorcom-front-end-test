@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./PhoneList.css";
 
 import PhoneItem from "../PhoneItem";
-import usePhoneData from "../../hooks/usePhoneData";
+import api from "../../services/api";
 
 export const PhoneList = () => {
-  const [phone] = usePhoneData();
+  const [phone, setPhone] = useState([]);
+  useEffect(() => {
+    const getAllPhones = async () => {
+      await api.get("phone").then((response) => {
+        setPhone(response.data);
+      });
+    };
+    getAllPhones();
+  }, []);
 
   return (
     <div className="phones-container">

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "./PhoneForm.css";
 import axios from "axios";
+import InputMask from "react-input-mask";
+import { DateTime } from "luxon";
 
 const initialValue = {
   model: "",
   brand: "",
-  color: "BLACK",
+  color: "",
   price: 0,
   date: "",
   endDate: "",
@@ -17,16 +19,37 @@ const initialValue = {
 export const PhoneForm = () => {
   const history = useHistory();
   const { _id } = useParams();
-
   const [values, setValues] = useState(_id ? null : initialValue);
+  const [startDate, SetStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   useEffect(() => {
     if (_id) {
       api.get(`/phone/${_id}`).then((response) => {
-        setValues(response.data);
+        const dateFormat = DateTime.fromISO(response.data.date);
+        const dateEndFormat = DateTime.fromISO(response.data.endDate);
+        const DateForRead = dateFormat
+          .setLocale("pt-br")
+          .toLocaleString(DateTime.DATETIME_SHORT);
+        const DateEndForRead = dateEndFormat
+          .setLocale("pt-br")
+          .toLocaleString(DateTime.DATETIME_SHORT);
+
+        SetStartDate(DateForRead);
+        setEndDate(DateEndForRead);
+        setValues({
+          model: response.data.model,
+          brand: response.data.brand,
+          color: response.data.color,
+          price: response.data.price,
+          date: DateForRead,
+          endDate: DateEndForRead,
+          code: "#13212",
+        });
       });
     }
   }, [_id]);
+
   function OnChangeInput(event) {
     const { name, value } = event.target;
 
@@ -40,7 +63,6 @@ export const PhoneForm = () => {
       ? `https://phones--melhorcom.repl.co/phone/${_id}`
       : "https://phones--melhorcom.repl.co/phone/";
 
-    console.log("go to => ", url);
     axios[method](url, values, {
       headers: { cpf: "04925787454" },
     })
@@ -69,6 +91,8 @@ export const PhoneForm = () => {
                 name="model"
                 id="model"
                 placeholder="XT2041-1"
+                min="2"
+                max="255"
               />
             </div>
             <div className="form-row">
@@ -82,15 +106,21 @@ export const PhoneForm = () => {
                 type="text"
                 name="brand"
                 placeholder="Motorola"
+                min="2"
+                max="255"
               />
             </div>
           </div>
-
           <div className="group-form">
             <div className="form-row">
               <label className="form-label" htmlFor="color">
                 Cor
-                <select className="placeholder" onChange={OnChangeInput}>
+                <select
+                  className="placeholder"
+                  onChange={OnChangeInput}
+                  id="color"
+                  name="color"
+                >
                   <option value="BLACK">Preto</option>
                   <option value="WHITE">Branco</option>
                   <option value="GOLD">Dourado</option>
@@ -112,34 +142,35 @@ export const PhoneForm = () => {
               />
             </div>
           </div>
-
           <div className="group-form date">
             <div className="form-row ">
               <label className="form-label" htmlFor="date">
                 Inicio das vendas
               </label>
-              <input
-                value={values.date}
-                onChange={OnChangeInput}
-                id="date"
-                type="text"
+              <InputMask
+                mask="99/99/9999"
                 name="date"
+                value={values.date}
+                id="date"
+                mask="99/99/9999"
                 placeholder="14/06/2020"
-                min="2018-12-25"
+                className="holy"
+                onChange={OnChangeInput}
+                className="input"
               />
             </div>
             <div className="form-row">
               <label className="form-label" htmlFor="endDate">
                 Fim das Vendas
               </label>
-              <input
-                value={values.endDate}
-                onChange={OnChangeInput}
+              <InputMask
                 id="endDate"
-                type="text"
                 name="endDate"
+                value={values.endDate}
+                mask="99/99/9999"
                 placeholder="14/06/2020"
-                min="2018-12-25"
+                className="input"
+                onChange={OnChangeInput}
               />
             </div>
           </div>
@@ -148,6 +179,7 @@ export const PhoneForm = () => {
 
             <button>VOLTAR</button>
           </div>
+          <h2>{values.color}</h2>
         </form>
       )}
     </div>

@@ -28,7 +28,9 @@
 }
 .form-container .form-row input[type="text"],
 .form-container .form-row input[type="number"],
-.form-container .form-row input[type="date"] {
+.form-container .form-row input[type="date"],
+.form-container .form-row .input-data,
+.input {
   height: 35px;
   width: 198px;
   outline: none;
@@ -37,6 +39,7 @@
 
   padding-left: 10px;
 }
+
 .form-container .form-row select {
   display: block;
   width: 198px;
