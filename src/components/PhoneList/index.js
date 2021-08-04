@@ -3,17 +3,24 @@ import React, { useEffect, useState } from "react";
 import "./PhoneList.css";
 
 import PhoneItem from "../PhoneItem";
-import api from "../../services/api";
+
+import useApi from "../utils/useApi";
 
 export const PhoneList = () => {
   const [phone, setPhone] = useState([]);
+  const [load, loadInfo] = useApi({
+    method: "get",
+    url: "https://phones--melhorcom.repl.co/phone",
+    headers: {
+      cpf: "04925787454",
+    },
+    onCompleted(response) {
+      setPhone(response.data);
+    },
+  });
+
   useEffect(() => {
-    const getAllPhones = async () => {
-      await api.get("phone").then((response) => {
-        setPhone(response.data);
-      });
-    };
-    getAllPhones();
+    load();
   }, []);
 
   return (
