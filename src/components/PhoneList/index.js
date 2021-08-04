@@ -8,12 +8,9 @@ import useApi from "../utils/useApi";
 
 export const PhoneList = () => {
   const [phone, setPhone] = useState([]);
-  const [load, loadInfo] = useApi({
+  const [load] = useApi({
     method: "get",
-    url: "https://phones--melhorcom.repl.co/phone",
-    headers: {
-      cpf: "04925787454",
-    },
+    url: "/phone",
     onCompleted(response) {
       setPhone(response.data);
     },
