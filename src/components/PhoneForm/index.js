@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { useHistory, useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import "./PhoneForm.css";
-
 import InputMask from "react-input-mask";
-
 import useApi from "../utils/useApi";
 
+import "./PhoneForm.css";
+import { DateTime } from "luxon";
+import ValidationSchema from "./ValidationSchema";
 const initialValue = {
   model: "",
   brand: "",
-  color: "BLACK",
-  price: 0,
+  color: "",
+  price: "",
   date: new Date(),
   endDate: new Date(),
   code: "#13212",
@@ -21,14 +21,10 @@ const initialValue = {
 export const PhoneForm = () => {
   const history = useHistory();
   const { _id } = useParams();
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+
   const [load, loadInfo] = useApi({
     url: `/phone/${_id}`,
     method: "get",
-    onCompleted: (response) => {
-      console.log(response, "eai");
-    },
   });
   const [save, saveInfo] = useApi({
     url: _id ? `/phone/${_id}` : "/phone/",
@@ -51,9 +47,18 @@ export const PhoneForm = () => {
     });
   }
   function formatDate(str) {
-    return new Date(str).toLocaleDateString();
+    const dateFormat = DateTime.fromISO(str);
+
+    return dateFormat
+      .setLocale("pt-br")
+      .toLocaleString(DateTime.DATETIME_SHORT);
   }
   const values = _id ? loadInfo.data : initialValue;
+
+  function codeHandle() {
+    let randomCodeString = "#" + Math.random().toString(10).substr(2, 8);
+    return randomCodeString;
+  }
 
   return (
     <div className="form-container">
@@ -69,43 +74,68 @@ export const PhoneForm = () => {
             price: values.price,
             date: formatDate(values.date),
             endDate: formatDate(values.endDate),
-            code: "#13212",
+            code: codeHandle(),
           }}
           onSubmit={OnSubmit}
+          validationSchema={ValidationSchema}
         >
-          {({ values }) => (
+          {({ values, errors }) => (
             <Form>
               <div className="group-form">
                 <div className="form-row">
                   <label className="form-label" htmlFor="model">
                     Modelo
                   </label>
-                  <Field type="text" name="model" id="model" />
+                  <Field
+                    type="text"
+                    placeholder="XT2041-1"
+                    name="model"
+                    id="model"
+                  />
+                  {errors.model && <h4>{errors.model}</h4>}
                 </div>
                 <div className="form-row">
                   <label className="form-label" htmlFor="brand">
                     Marca
                   </label>
-                  <Field type="text" name="brand" id="brand" />
+                  <Field
+                    type="text"
+                    placeholder="Motorola"
+                    name="brand"
+                    id="brand"
+                  />
+                  {errors.brand && <h4>{errors.brand}</h4>}
                 </div>
               </div>
               <div className="group-form">
                 <div className="form-row">
                   <label className="form-label" htmlFor="color">
                     Cor
-                    <Field as="select" id="color" name="color">
+                    <Field
+                      as="select"
+                      id="color"
+                      placeholder="Preto"
+                      name="color"
+                    >
                       <option value="BLACK">Preto</option>
                       <option value="WHITE">Branco</option>
                       <option value="GOLD">Dourado</option>
                       <option value="PINK">Rosa</option>
                     </Field>
+                    {errors.color && <h4>{errors.color}</h4>}
                   </label>
                 </div>
                 <div className="form-row">
                   <label className="form-label" htmlFor="price">
                     Preço
                   </label>
-                  <Field type="number" id="price" name="price" />
+                  <Field
+                    type="number"
+                    id="price"
+                    name="price"
+                    placeholder="1.400"
+                  />
+                  {errors.price && <h4>{errors.price}</h4>}
                 </div>
               </div>
               <div className="group-form date">
@@ -118,10 +148,11 @@ export const PhoneForm = () => {
                     mask="99/99/9999"
                     name="date"
                     id="date"
-                    placeholder="14/06/2020"
+                    placeholder="14/03/2020"
                     className="input"
                     type="text"
                   />
+                  {errors.date && <h4>{errors.date}</h4>}
                 </div>
                 <div className="form-row">
                   <label className="form-label" htmlFor="endDate">
@@ -137,6 +168,7 @@ export const PhoneForm = () => {
                     placeholder="14/06/2020"
                     type="text"
                   />
+                  {errors.endDate && <h4>{errors.endDate}</h4>}
                 </div>
               </div>
               <div className="group-button">
@@ -144,9 +176,8 @@ export const PhoneForm = () => {
 
                 <button>VOLTAR</button>
               </div>
-              <h2>AAAAAAAAAAAAAAAAAAAAA</h2>
-              <h2>{values.color}</h2>
-              <h2>{values.date}</h2>
+
+              <h3>{values.code}</h3>
             </Form>
           )}
         </Formik>

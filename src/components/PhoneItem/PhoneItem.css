@@ -15,16 +15,9 @@
   display: flex;
 }
 
-.list-content img {
-  display: block;
+.buttons {
   margin-right: 2em;
-}
-
-.links-div {
-  display: flex;
-}
-
-.list-content img {
-  display: block;
-  margin-right: 2em;
+  background: unset;
+  font-size: 18px;
+  border: unset;
 }

@@ -15,6 +15,9 @@ export const PhoneList = () => {
       setPhone(response.data);
     },
   });
+  const [deletePhone, setDeletePhone] = useApi({
+    method: "DELETE",
+  });
 
   useEffect(() => {
     load();
@@ -35,7 +38,15 @@ export const PhoneList = () => {
           <li>Cor</li>
         </ul>
         {phone.map((phone) => (
-          <PhoneItem key={phone._id} phone={phone} />
+          <PhoneItem
+            key={phone._id}
+            phone={phone}
+            OnClickDelete={() => {
+              deletePhone({
+                url: `/phone/${phone._id}`,
+              });
+            }}
+          />
         ))}
       </div>
     </div>
