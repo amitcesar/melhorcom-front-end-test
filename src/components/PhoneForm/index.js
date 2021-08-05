@@ -11,7 +11,7 @@ import ValidationSchema from "./ValidationSchema";
 const initialValue = {
   model: "",
   brand: "",
-  color: "",
+  color: "BLACK",
   price: "",
   date: new Date(),
   endDate: new Date(),
@@ -186,7 +186,7 @@ export const PhoneForm = () => {
               <div className="group-button">
                 <button type="submit">SALVAR</button>
 
-                <button>VOLTAR</button>
+                <button onClick={() => history.goBack("/")}>VOLTAR</button>
               </div>
             </Form>
           )}

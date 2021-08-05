@@ -1,11 +1,11 @@
 .footer {
   background: #054a91;
-  height: 87px;
+  height: 90px;
   width: 100%;
   color: #dae3ed;
   font-size: 12px;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
