@@ -45,6 +45,7 @@
 }
 .icons span {
   margin-left: 0.5em;
+  font-weight: bolder;
 }
 .list-wrapper {
   border: 1px solid black;

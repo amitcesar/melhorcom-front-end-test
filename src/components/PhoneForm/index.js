@@ -31,7 +31,6 @@ export const PhoneForm = () => {
     method: _id ? "patch" : "post",
     onCompleted: (response) => {
       if (!response.error) {
-        console.log("resss", response);
         history.push("/");
       }
     },
@@ -186,7 +185,9 @@ export const PhoneForm = () => {
               <div className="group-button">
                 <button type="submit">SALVAR</button>
 
-                <button onClick={() => history.goBack("/")}>VOLTAR</button>
+                <button type="button" onClick={() => history.goBack("/")}>
+                  VOLTAR
+                </button>
               </div>
             </Form>
           )}

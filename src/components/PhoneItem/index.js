@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { FaTrash } from "react-icons/fa";
 import { RiPencilFill } from "react-icons/ri";
@@ -26,7 +26,7 @@ const PhoneItem = ({ phone, OnClickDelete, loading }) => {
           className="buttons"
           onClick={() => push(`/phone/${phone._id}`)}
         >
-          <RiPencilFill />
+          <RiPencilFill className="icon-list" />
         </button>
         <button type="button" className="buttons" onClick={OnClickDelete}>
           <FaTrash />

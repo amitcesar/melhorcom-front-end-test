@@ -13,11 +13,16 @@
 
 .links-div {
   display: flex;
+  margin-right: 1em;
 }
 
 .buttons {
-  margin-right: 2em;
+  margin-right: 1em;
   background: unset;
   font-size: 18px;
   border: unset;
+}
+
+.icon-list {
+  font-size: 22px;
 }
