@@ -36,7 +36,6 @@
   outline: none;
   border-radius: 5px;
   border: 1px solid #707070;
-
   padding-left: 10px;
 }
 
@@ -76,4 +75,8 @@
 }
 .group-button button:last-child {
   margin-right: 0.7em;
+}
+
+.error-message {
+  color: red;
 }

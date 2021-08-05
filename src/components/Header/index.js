@@ -1,11 +1,14 @@
 import React from "react";
-import Logo from "../../images/logo.png";
+
 import "./Header.css";
+import { IoPhonePortrait } from "react-icons/io5";
 
 export const Header = () => {
   return (
     <div class="header-navbar">
-      <img src={Logo} alt="logo" />
+      <h1>M</h1>
+
+      <IoPhonePortrait className="icon-header" />
     </div>
   );
 };

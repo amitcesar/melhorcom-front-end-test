@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-
-import "./PhoneList.css";
-
+import { useHistory } from "react-router-dom";
 import PhoneItem from "../PhoneItem";
-
 import useApi from "../utils/useApi";
+import "./PhoneList.css";
+import { AiOutlinePlus } from "react-icons/ai";
+import { MdPhoneIphone } from "react-icons/md";
 
 export const PhoneList = () => {
+  const { push } = useHistory();
   const [phone, setPhone] = useState([]);
   const [load] = useApi({
     method: "get",
@@ -17,6 +18,9 @@ export const PhoneList = () => {
   });
   const [deletePhone, setDeletePhone] = useApi({
     method: "DELETE",
+    onCompleted(response) {
+      load();
+    },
   });
 
   useEffect(() => {
@@ -27,7 +31,14 @@ export const PhoneList = () => {
     <div className="phones-container">
       <div className="header-list">
         <p className="header-title">Produtos</p>
-        <button className="buttonAdd">Add</button>
+        <button className="buttonAdd" onClick={() => push("/phone/")}>
+          <div className="icons">
+            <AiOutlinePlus className="buttonAdd-icons" />
+            <MdPhoneIphone className="buttonAdd-icons" />
+
+            <span>ADCIONAR</span>
+          </div>
+        </button>
       </div>
       <div className="list-wrapper">
         <ul className="list-category">

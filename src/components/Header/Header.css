@@ -1,7 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto:wght@500&display=swap");
+
 .header-navbar {
   background: #054a91;
   height: 87px;
 
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+  color: #dae3ed;
+}
+.header-navbar h1 {
+  font-size: 56px;
+  color: #dae3ed;
+}
+
+.icon-header {
+  font-size: 45px;
+
+  color: #1d1d1d;
 }

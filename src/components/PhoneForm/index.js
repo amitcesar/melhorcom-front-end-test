@@ -15,7 +15,7 @@ const initialValue = {
   price: "",
   date: new Date(),
   endDate: new Date(),
-  code: "#13212",
+  code: "",
 };
 
 export const PhoneForm = () => {
@@ -79,7 +79,7 @@ export const PhoneForm = () => {
           onSubmit={OnSubmit}
           validationSchema={ValidationSchema}
         >
-          {({ values, errors }) => (
+          {({ values, errors, touched }) => (
             <Form>
               <div className="group-form">
                 <div className="form-row">
@@ -92,7 +92,9 @@ export const PhoneForm = () => {
                     name="model"
                     id="model"
                   />
-                  {errors.model && <h4>{errors.model}</h4>}
+                  {errors.model && touched.model ? (
+                    <span className="error-message">{errors.model}</span>
+                  ) : null}
                 </div>
                 <div className="form-row">
                   <label className="form-label" htmlFor="brand">
@@ -104,7 +106,9 @@ export const PhoneForm = () => {
                     name="brand"
                     id="brand"
                   />
-                  {errors.brand && <h4>{errors.brand}</h4>}
+                  {errors.brand && touched.brand ? (
+                    <span className="error-message">{errors.brand}</span>
+                  ) : null}
                 </div>
               </div>
               <div className="group-form">
@@ -122,7 +126,9 @@ export const PhoneForm = () => {
                       <option value="GOLD">Dourado</option>
                       <option value="PINK">Rosa</option>
                     </Field>
-                    {errors.color && <h4>{errors.color}</h4>}
+                    {errors.color && touched.color ? (
+                      <span className="error-message">{errors.color}</span>
+                    ) : null}
                   </label>
                 </div>
                 <div className="form-row">
@@ -135,7 +141,9 @@ export const PhoneForm = () => {
                     name="price"
                     placeholder="1.400"
                   />
-                  {errors.price && <h4>{errors.price}</h4>}
+                  {errors.price && touched.price ? (
+                    <span className="error-message">{errors.price}</span>
+                  ) : null}
                 </div>
               </div>
               <div className="group-form date">
@@ -152,7 +160,9 @@ export const PhoneForm = () => {
                     className="input"
                     type="text"
                   />
-                  {errors.date && <h4>{errors.date}</h4>}
+                  {errors.date && touched.date ? (
+                    <span className="error-message">{errors.date}</span>
+                  ) : null}
                 </div>
                 <div className="form-row">
                   <label className="form-label" htmlFor="endDate">
@@ -168,7 +178,9 @@ export const PhoneForm = () => {
                     placeholder="14/06/2020"
                     type="text"
                   />
-                  {errors.endDate && <h4>{errors.endDate}</h4>}
+                  {errors.endDate && touched.endDate ? (
+                    <span classname="error-message">{errors.endDate}</span>
+                  ) : null}
                 </div>
               </div>
               <div className="group-button">
@@ -176,8 +188,6 @@ export const PhoneForm = () => {
 
                 <button>VOLTAR</button>
               </div>
-
-              <h3>{values.code}</h3>
             </Form>
           )}
         </Formik>

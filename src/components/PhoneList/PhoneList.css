@@ -25,16 +25,27 @@
 }
 
 .header-list button {
-  width: 100px;
-  height: 35px;
+  width: 135px;
+  height: 40px;
   padding: 0.5em;
-  background: #4aa1f8;
   border-radius: 5px;
-
-  display: block;
   margin-bottom: 0.5em;
+  background: #dae3ed;
+  margin-left: 2.5em;
+  border: 1px solid #1d1d1d;
 }
-
+.buttonAdd-icons {
+  font-size: 20px;
+  border: unset;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons span {
+  margin-left: 0.5em;
+}
 .list-wrapper {
   border: 1px solid black;
   border-radius: 5px;
@@ -43,7 +54,7 @@
   min-width: 500px;
 }
 .list-category li {
-  padding: 2em 1.5em;
+  padding: 2em;
 }
 .list-category {
   display: flex;

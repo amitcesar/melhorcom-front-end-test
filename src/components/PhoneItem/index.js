@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Edit from "../../images/edit-24px.svg";
-import Delete from "../../images/delete-24px.svg";
+
 import { FaTrash } from "react-icons/fa";
 import { RiPencilFill } from "react-icons/ri";
 import "./PhoneItem.css";
 import { useHistory } from "react-router-dom";
 
-const PhoneItem = ({ phone, OnClickDelete }) => {
+const PhoneItem = ({ phone, OnClickDelete, loading }) => {
   const { push } = useHistory();
   function WithOutSlash() {
     const phoneCode = phone.code[0];
